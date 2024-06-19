@@ -7,18 +7,8 @@
 * numpy==1.19.5、pycocotools-windows==2.0.0.2、Pillow==9.3.0
   
 
-##Demo Video
-
-
-
-
+## Demo Video
 https://github.com/chengxixugong/Image-Segmentation/assets/160144892/97102d78-1ac4-47b1-ac37-cb7423915997
-
-
-
-
-
-
 
 
 ## 文件结构：
