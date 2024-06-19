@@ -1,8 +1,18 @@
 # Mask R-CNN
 ## 环境配置：
 * Python3.6/3.7/3.8
-* Pytorch1.10或以上
-* 详细环境配置见`requirements.txt`
+* torch==1.13.1
+* torchvision==0.11.1
+* matplotlib==3.5.1、tqdm==4.64.1、lxml==4.9.0
+* numpy==1.19.5、pycocotools-windows==2.0.0.2、Pillow==9.3.0
+  
+
+
+
+
+
+
+
 
 
 
