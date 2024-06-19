@@ -2,8 +2,6 @@
 ## 环境配置：
 * Python3.6/3.7/3.8
 * Pytorch1.10或以上
-* pycocotools(Linux:`pip install pycocotools`; Windows:`pip install pycocotools-windows`(不需要额外安装vs))
-* Ubuntu或Centos(不建议Windows)
 * 最好使用GPU训练
 * 详细环境配置见`requirements.txt`
 
