@@ -20,21 +20,8 @@
 ```
 
 
-├── coco2017: 数据集根目录
-     ├── train2017: 所有训练图像文件夹(118287张)
-     ├── val2017: 所有验证图像文件夹(5000张)
-     └── annotations: 对应标注文件夹
-              ├── instances_train2017.json: 对应目标检测、分割任务的训练集标注文件
-              ├── instances_val2017.json: 对应目标检测、分割任务的验证集标注文件
-              ├── captions_train2017.json: 对应图像描述的训练集标注文件
-              ├── captions_val2017.json: 对应图像描述的验证集标注文件
-              ├── person_keypoints_train2017.json: 对应人体关键点检测的训练集标注文件
-              └── person_keypoints_val2017.json: 对应人体关键点检测的验证集标注文件夹
-```
-
 ### Pascal VOC2012数据集
 * 数据集下载地址： http://host.robots.ox.ac.uk/pascal/VOC/voc2012/index.html#devkit
-* 对数据集不了解的可以看下我写的博文：https://blog.csdn.net/qq_37541097/article/details/115787033
 * 解压后得到的文件夹结构如下：
 ```
 VOCdevkit
