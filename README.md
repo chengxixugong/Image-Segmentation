@@ -1,8 +1,4 @@
 # Mask R-CNN
-
-## 该项目参考自pytorch官方torchvision模块中的源码(使用pycocotools处略有不同)
-* https://github.com/pytorch/vision/tree/master/references/detection
-
 ## 环境配置：
 * Python3.6/3.7/3.8
 * Pytorch1.10或以上
@@ -25,23 +21,7 @@
   └── transforms.py: 数据预处理（随机水平翻转图像以及bboxes、将PIL图像转为Tensor）
 ```
 
-## 预训练权重下载地址（下载后放入当前文件夹中）：
-* Resnet50预训练权重 https://download.pytorch.org/models/resnet50-0676ba61.pth (注意，下载预训练权重后要重命名，
-比如在train.py中读取的是`resnet50.pth`文件，不是`resnet50-0676ba61.pth`)
-* Mask R-CNN(Resnet50+FPN)预训练权重 https://download.pytorch.org/models/maskrcnn_resnet50_fpn_coco-bf2d0c1e.pth (注意，
-载预训练权重后要重命名，比如在train.py中读取的是`maskrcnn_resnet50_fpn_coco.pth`文件，不是`maskrcnn_resnet50_fpn_coco-bf2d0c1e.pth`)
- 
- 
-## 数据集，本例程使用的有COCO2017数据集和Pascal VOC2012数据集
-### COCO2017数据集
-* COCO官网地址：https://cocodataset.org/
-* 对数据集不了解的可以看下我写的博文：https://blog.csdn.net/qq_37541097/article/details/113247318
-* 这里以下载coco2017数据集为例，主要下载三个文件：
-    * `2017 Train images [118K/18GB]`：训练过程中使用到的所有图像文件
-    * `2017 Val images [5K/1GB]`：验证过程中使用到的所有图像文件
-    * `2017 Train/Val annotations [241MB]`：对应训练集和验证集的标注json文件
-* 都解压到`coco2017`文件夹下，可得到如下文件夹结构：
-```
+
 ├── coco2017: 数据集根目录
      ├── train2017: 所有训练图像文件夹(118287张)
      ├── val2017: 所有验证图像文件夹(5000张)
@@ -107,47 +87,3 @@ python train.py --data-path /data/VOCdevkit
 5. 在使用预测脚本时，要将`weights_path`设置为你自己生成的权重路径。
 6. 使用validation文件时，注意确保你的验证集或者测试集中必须包含每个类别的目标，并且使用时需要修改`--num-classes`、`--data-path`、`--weights-path`以及
 `--label-json-path`（该参数是根据训练的数据集设置的）。其他代码尽量不要改动
-
-
-## 复现结果
-在COCO2017数据集上进行复现，训练过程中仅载入Resnet50的预训练权重，训练26个epochs。训练采用指令如下：
-```
-torchrun --nproc_per_node=8 train_multi_GPU.py --batch-size 8 --lr 0.08 --pretrain False --amp True
-```
-
-训练得到权重下载地址： https://pan.baidu.com/s/1qpXUIsvnj8RHY-V05J-mnA  密码: 63d5
-
-在COCO2017验证集上的mAP(目标检测任务)：
-```
- Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.381
- Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.588
- Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.411
- Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.215
- Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.420
- Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.492
- Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.315
- Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.499
- Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.523
- Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.319
- Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.565
- Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.666
-```
-
-在COCO2017验证集上的mAP(实例分割任务)：
-```
- Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.340
- Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.552
- Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.361
- Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.151
- Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.369
- Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.500
- Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.290
- Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.449
- Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.468
- Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.266
- Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.509
- Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.619
-```
-
-## 如果对Mask RCNN原理不是很理解可参考我的bilibili
-https://www.bilibili.com/video/BV1ZY411774T
