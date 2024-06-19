@@ -2,7 +2,6 @@
 ## 环境配置：
 * Python3.6/3.7/3.8
 * Pytorch1.10或以上
-* 最好使用GPU训练
 * 详细环境配置见`requirements.txt`
 
 
