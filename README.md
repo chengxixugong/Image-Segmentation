@@ -4,6 +4,9 @@
 * Pytorch1.10或以上
 * 最好使用GPU训练
 * 详细环境配置见`requirements.txt`
+## Demo Video
+https://github.com/chengxixugong/Image-Segmentation/blob/master/6%E6%9C%8819%E6%97%A5.mp4
+
 
 ## 文件结构：
 ```
